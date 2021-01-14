@@ -1,9 +1,17 @@
 package com.vaescode.springboot.form.app.model.domain;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Usuario {
 
+	@NotEmpty 
 	private String username;
+	
+	@NotEmpty 
 	private String password;
+	
+	@NotEmpty 
 	private String email;
 
 	public String getUsername() {
