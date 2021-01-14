@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.vaescode.springboot.form.app.model.domain.Usuario;
 
@@ -17,12 +18,14 @@ public class FormController {
 
 	@GetMapping("/form")
 	public String form(Model model) {
+		Usuario usuario = new Usuario();
 		model.addAttribute("titulo", "Formulario usuarios");
+		model.addAttribute("usuario", usuario);
 		return "form";
 	}
 
 	@PostMapping("/form")
-	public String procesarFormulario(@Valid Usuario usuario, BindingResult result, Model model) {
+	public String procesarFormulario(@Valid @ModelAttribute("user") Usuario usuario, BindingResult result, Model model) {
 		
 		model.addAttribute("titulo", "Resultado del form");
 		if (result.hasErrors()) {
