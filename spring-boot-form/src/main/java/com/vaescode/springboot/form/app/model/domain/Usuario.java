@@ -1,7 +1,7 @@
 package com.vaescode.springboot.form.app.model.domain;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 
 public class Usuario {
 
