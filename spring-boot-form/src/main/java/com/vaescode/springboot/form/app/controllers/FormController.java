@@ -25,7 +25,7 @@ public class FormController {
 	}
 
 	@PostMapping("/form")
-	public String procesarFormulario(@Valid @ModelAttribute("user") Usuario usuario, BindingResult result, Model model) {
+	public String procesarFormulario(@Valid Usuario usuario, BindingResult result, Model model) {
 		
 		model.addAttribute("titulo", "Resultado del form");
 		if (result.hasErrors()) {
