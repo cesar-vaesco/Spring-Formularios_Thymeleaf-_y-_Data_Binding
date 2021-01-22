@@ -11,10 +11,10 @@ public class Usuario {
 	 * [0-9] es igual a [\\d]
 	 * [.,] indica que la expresión puede llevar o coma o punto pero no los dos
 	 * */
-	@Pattern(regexp ="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+	//@Pattern(regexp ="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
 	private String identificador;
 
-	@NotEmpty(message = "el campo 'nombre' no puede ir vacío")
+	//@NotEmpty(message = "el campo 'nombre' no puede ir vacío")
 	private String nombre;
 
 	@NotEmpty
