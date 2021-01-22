@@ -2,9 +2,17 @@ package com.vaescode.springboot.form.app.model.domain;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Usuario {
+	
+	/*
+	 * [0-9] es igual a [\\d]
+	 * [.,] indica que la expresión puede llevar o coma o punto pero no los dos
+	 * */
+	@Pattern(regexp ="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+	private String identificador;
 
 	@NotEmpty(message = "el campo 'nombre' no puede ir vacío")
 	private String nombre;
@@ -23,7 +31,7 @@ public class Usuario {
 	@Email
 	private String email;
 
-	private String identificador;
+	
 
 	public String getNombre() {
 		return nombre;
