@@ -1,6 +1,7 @@
 package com.vaescode.springboot.form.app.model.domain;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -17,10 +18,10 @@ public class Usuario {
 	//@NotEmpty(message = "el campo 'nombre' no puede ir vacío")
 	private String nombre;
 
-	@NotEmpty
+	@NotBlank
 	private String apellido;
 
-	@NotEmpty
+	@NotBlank
 	@Size(min = 3, max = 8)
 	private String username;
 
