@@ -6,6 +6,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.vaescode.springboot.form.app.validator.IdentificadorRegex;
+
 public class Usuario {
 	
 	/*
@@ -13,6 +15,7 @@ public class Usuario {
 	 * [.,] indica que la expresión puede llevar o coma o punto pero no los dos
 	 * */
 	//@Pattern(regexp ="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+	@IdentificadorRegex
 	private String identificador;
 
 	//@NotEmpty(message = "el campo 'nombre' no puede ir vacío")
