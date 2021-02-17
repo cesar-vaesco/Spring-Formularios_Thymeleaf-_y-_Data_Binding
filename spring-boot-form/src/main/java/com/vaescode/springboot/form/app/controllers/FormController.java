@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.vaescode.springboot.form.app.editors.NombreMayusculaEditor;
 import com.vaescode.springboot.form.app.model.domain.Usuario;
 import com.vaescode.springboot.form.app.validator.UsuarioValidator;
 
@@ -32,7 +33,11 @@ public class FormController {
 		binder.addValidators(validador);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);
+		
+		//binder.registerCustomEditor permite conversión entre valores de cadena y tipos de objetos personalizados
 		binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, true));
+		binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
+		
 	}
 	
 	@GetMapping("/form")
