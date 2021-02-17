@@ -36,7 +36,9 @@ public class FormController {
 		
 		//binder.registerCustomEditor permite conversión entre valores de cadena y tipos de objetos personalizados
 		binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, true));
-		binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
+		//binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
+		binder.registerCustomEditor(String.class,"nombre",new NombreMayusculaEditor());
+		binder.registerCustomEditor(String.class,"apellido",new NombreMayusculaEditor());
 		
 	}
 	
