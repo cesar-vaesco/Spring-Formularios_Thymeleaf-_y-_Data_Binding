@@ -53,7 +53,7 @@
 		<div>
 			<label for="cuenta"> Cuenta </label>
 			<div>
-				<input type="number" id="cuenta" th:field="*{cuenta}">
+				<input type="text" id="cuenta" th:field="*{cuenta}">
 			</div>
 			<div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
 		</div>
