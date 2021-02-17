@@ -2,21 +2,21 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title th:text="${titulo}">Insert title here</title>
+<title th:text="${titulo}">Formulario</title>
 </head>
 <body>
 	<h3 th:text="${titulo}"></h3>
 	<form th:action="@{/form}" th:object="${usuario}" method="post">
 
 		<div>
-			<label for="identificador">Identificador </label>
+			<label for="identificador">Identificador</label>
 			<div>
 				<input type="text" id="identificador" th:field="*{identificador}">
 			</div>
 			<div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
 		</div>
 		<div>
-			<label for="nombre">Nombre </label>
+			<label for="nombre">Nombre</label>
 			<div>
 				<input type="text" id="nombre" th:field="*{nombre}">
 			</div>
