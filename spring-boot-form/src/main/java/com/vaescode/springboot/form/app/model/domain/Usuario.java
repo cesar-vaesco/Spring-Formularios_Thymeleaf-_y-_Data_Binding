@@ -1,5 +1,7 @@
 package com.vaescode.springboot.form.app.model.domain;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -8,6 +10,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vaescode.springboot.form.app.validator.IdentificadorRegex;
 import com.vaescode.springboot.form.app.validator.Requerido;
@@ -44,6 +48,10 @@ public class Usuario {
 	@Min(5)
 	@Max(5000)
 	private Integer cuenta;
+	
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaNacimiento;
 
 	public String getNombre() {
 		return nombre;
@@ -101,5 +109,12 @@ public class Usuario {
 		this.identificador = identificador;
 	}
 
-	
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
 }
