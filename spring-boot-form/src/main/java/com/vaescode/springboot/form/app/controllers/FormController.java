@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.vaescode.springboot.form.app.editors.NombreMayusculaEditor;
+import com.vaescode.springboot.form.app.model.domain.Pais;
 import com.vaescode.springboot.form.app.model.domain.Usuario;
 import com.vaescode.springboot.form.app.validator.UsuarioValidator;
 
@@ -32,28 +33,42 @@ public class FormController {
 
 	@Autowired
 	private UsuarioValidator validador;
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(validador);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);
-		
-		//binder.registerCustomEditor permite conversión entre valores de cadena y tipos de objetos personalizados
-		binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, true));
-		//binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
-		binder.registerCustomEditor(String.class,"nombre",new NombreMayusculaEditor());
-		binder.registerCustomEditor(String.class,"apellido",new NombreMayusculaEditor());
+
+		// binder.registerCustomEditor permite conversión entre valores de cadena y
+		// tipos de objetos personalizados
+		binder.registerCustomEditor(Date.class, "fechaNacimiento", new CustomDateEditor(dateFormat, true));
+		// binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
+		binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
+		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
 	}
-	
+
+	@ModelAttribute("listaPaises")
+	public List<Pais> listaPaises(){
+		return Arrays.asList(
+				new Pais(1,"MX", "México"),
+				new Pais(2,"ES","España"), 
+				new Pais(3,"CL","Chile"), 
+				new Pais(4,"AR","Argentina"),
+				new Pais(5,"EC","Ecuador"), 
+				new Pais(6,"PR","Perú"), 
+				new Pais(7,"CL","Colombia"),
+				new Pais(8,"VZ","Venezuela"));
+	}
+
 	@ModelAttribute("paises")
-	public List<String> paises(){
-		return Arrays.asList("México","España", "Chile", "Argentina","Ecuador", "Perú", "Colombia");
+	public List<String> paises() {
+		return Arrays.asList("México", "España", "Chile", "Argentina", "Ecuador", "Perú", "Colombia");
 	}
-	
+
 	@ModelAttribute("paisesMap")
-	public Map<String, String> paisesMap(){
-		//Map - interfaz -> HashMap - implementación de interfaz 
+	public Map<String, String> paisesMap() {
+		// Map - interfaz -> HashMap - implementación de interfaz
 		Map<String, String> paises = new HashMap<String, String>();
 		paises.put("ES", "España");
 		paises.put("MX", "México");
@@ -65,7 +80,7 @@ public class FormController {
 		paises.put("VE", "Venezuela");
 		return paises;
 	}
-	
+
 	@GetMapping("/form")
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
@@ -79,19 +94,21 @@ public class FormController {
 
 	@PostMapping("/form")
 	public String procesarFormulario(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
-		
-		//validador.validate(usuario, result);
+
+		// validador.validate(usuario, result);
 		model.addAttribute("titulo", "Resultado del form");
 		if (result.hasErrors()) {
-			/*Map<String, String> errores = new HashMap<>();
-			result.getFieldErrors().forEach(err -> {
-				errores.put(err.getField(), "El campo ".concat(err.getField()).concat(" ").concat(err.getDefaultMessage()));
-			});
-			
-			model.addAttribute("error", errores);*/
+			/*
+			 * Map<String, String> errores = new HashMap<>();
+			 * result.getFieldErrors().forEach(err -> { errores.put(err.getField(),
+			 * "El campo ".concat(err.getField()).concat(" ").concat(err.getDefaultMessage()
+			 * )); });
+			 * 
+			 * model.addAttribute("error", errores);
+			 */
 			return "form";
 		}
-		
+
 		model.addAttribute("usuario", usuario);
 		status.setComplete();
 		return "resultado";
