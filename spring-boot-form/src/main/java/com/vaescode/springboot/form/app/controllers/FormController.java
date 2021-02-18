@@ -25,6 +25,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.vaescode.springboot.form.app.editors.NombreMayusculaEditor;
 import com.vaescode.springboot.form.app.model.domain.Pais;
 import com.vaescode.springboot.form.app.model.domain.Usuario;
+import com.vaescode.springboot.form.app.services.PaisService;
 import com.vaescode.springboot.form.app.validator.UsuarioValidator;
 
 @Controller
@@ -33,6 +34,9 @@ public class FormController {
 
 	@Autowired
 	private UsuarioValidator validador;
+	
+	@Autowired
+	private PaisService paisService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -50,15 +54,7 @@ public class FormController {
 
 	@ModelAttribute("listaPaises")
 	public List<Pais> listaPaises(){
-		return Arrays.asList(
-				new Pais(1,"MX", "México"),
-				new Pais(2,"ES","España"), 
-				new Pais(3,"CL","Chile"), 
-				new Pais(4,"AR","Argentina"),
-				new Pais(5,"EC","Ecuador"), 
-				new Pais(6,"PR","Perú"), 
-				new Pais(7,"CL","Colombia"),
-				new Pais(8,"VZ","Venezuela"));
+		return paisService.listar();
 	}
 
 	@ModelAttribute("paises")
