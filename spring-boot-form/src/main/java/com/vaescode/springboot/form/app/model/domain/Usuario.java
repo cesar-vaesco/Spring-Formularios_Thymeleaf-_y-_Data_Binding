@@ -21,19 +21,19 @@ import com.vaescode.springboot.form.app.validator.IdentificadorRegex;
 import com.vaescode.springboot.form.app.validator.Requerido;
 
 public class Usuario {
-	
+
 	/*
-	 * [0-9] es igual a [\\d]
-	 * [.,] indica que la expresión puede llevar o coma o punto pero no los dos
-	 * */
-	//@Pattern(regexp ="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+	 * [0-9] es igual a [\\d] [.,] indica que la expresión puede llevar o coma o
+	 * punto pero no los dos
+	 */
+	// @Pattern(regexp ="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
 	@IdentificadorRegex
 	private String identificador;
 
-	//@NotEmpty(message = "el campo 'nombre' no puede ir vacío")
+	// @NotEmpty(message = "el campo 'nombre' no puede ir vacío")
 	private String nombre;
 
-	//@NotBlank
+	// @NotBlank
 	@Requerido
 	private String apellido;
 
@@ -52,17 +52,17 @@ public class Usuario {
 	@Min(5)
 	@Max(5000)
 	private Integer cuenta;
-	
+
 	@NotNull
 	@Past
-	//(@DateTimeFormat(pattern = "yyyy-MM-dd")
+	// (@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
-	
+
 	@NotNull
 	private Pais pais;
-	
+
 	@NotEmpty
-	private List<String> roles;
+	private List<Role> roles;
 
 	public String getNombre() {
 		return nombre;
@@ -136,14 +136,12 @@ public class Usuario {
 		this.pais = pais;
 	}
 
-	public List<String> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
-
 
 }

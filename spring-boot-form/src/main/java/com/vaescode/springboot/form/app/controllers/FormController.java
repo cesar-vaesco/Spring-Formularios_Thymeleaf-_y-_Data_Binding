@@ -26,8 +26,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.vaescode.springboot.form.app.editors.NombreMayusculaEditor;
 import com.vaescode.springboot.form.app.editors.PaisPropertyEditor;
 import com.vaescode.springboot.form.app.model.domain.Pais;
+import com.vaescode.springboot.form.app.model.domain.Role;
 import com.vaescode.springboot.form.app.model.domain.Usuario;
 import com.vaescode.springboot.form.app.services.PaisService;
+import com.vaescode.springboot.form.app.services.RoleService;
 import com.vaescode.springboot.form.app.validator.UsuarioValidator;
 
 @Controller
@@ -39,6 +41,9 @@ public class FormController {
 
 	@Autowired
 	private PaisService paisService;
+
+	@Autowired
+	private RoleService roleService;
 
 	@Autowired
 	private PaisPropertyEditor paisEditor;
@@ -63,25 +68,30 @@ public class FormController {
 		return paisService.listar();
 	}
 
+	@ModelAttribute("listaRoles")
+	public List<Role> listarRoles() {
+		return roleService.listar();
+	}
+
 	@ModelAttribute("listaRolesString")
 	public List<String> listaRolesString() {
 		List<String> roles = new ArrayList<>();
 		roles.add("ROLE_ADMIN");
 		roles.add("ROLE_USER");
 		roles.add("ROLE_MODERATOR");
-		
+
 		return roles;
 	}
 
 	@ModelAttribute("listaRolesMap")
-	public Map<String, String> rolesMap(){
+	public Map<String, String> rolesMap() {
 		Map<String, String> roles = new HashMap<String, String>();
 		roles.put("ROLE_ADMIN", "Administrador");
 		roles.put("ROLE_USER", "Usuario");
 		roles.put("ROLE_MODERATOR", "Moderador");
 		return roles;
 	}
-	
+
 	@ModelAttribute("paises")
 	public List<String> paises() {
 		return Arrays.asList("México", "España", "Chile", "Argentina", "Ecuador", "Perú", "Colombia");
