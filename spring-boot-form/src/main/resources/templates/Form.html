@@ -3,119 +3,163 @@
 <head>
 <meta charset="utf-8">
 <title th:text="${titulo}">Formulario</title>
-<link th:rel="stylesheet"
-	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 </head>
 <body>
 
+
+
 	<div class="container">
 
-		<h3 th:text="${titulo}"></h3>
+		<h3 class="text-center text-white h1 m-3 mb-5 font-weight-bold bg-primary"
+			th:text="${titulo}"></h3>
+
 		<form th:action="@{/form}" th:object="${usuario}" method="post">
 
 
-			<div>
-				<label for="habilitar">Habilitar</label>
-				<div>
+			<div class="form-group row">
+				<label for="habilitar" class="col-form-label col-sm-2">Habilitar</label>
+				<div class="row col-sm-4">
 					<input type="checkbox" id="habilitar" th:field="*{habilitar}"
-						placeholder="13.458.365-K">
+						class="form-control col-sm-1">
 				</div>
 			</div>
-			<div>
-				<label>Género</label>
-				<div th:each="gen: ${genero}">
-					<input type="radio" th:field="*{genero}" th:value="${gen}">
-					<label th:for="${#ids.prev('genero')}" th:text=" ${gen}"></label>
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-2">Género</label>
+				<div th:each="gen: ${genero}" class="row col-sm-2">
+					<input type="radio" th:field="*{genero}" th:value="${gen}"
+						class="form-control col-sm-2"> <label
+						th:for="${#ids.prev('genero')}" th:text="${gen}"
+						class="col-form-label col-sm-2"></label>
 				</div>
-				<div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+				<div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"
+					class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="pais">País</label>
-				<div>
-					<select id="pais" th:field="*{pais}">
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-2" for="pais">País</label>
+				<div class="col-sm-4">
+					<select id="pais" th:field="*{pais}" class="form-control">
 						<option value="">--seleccionar --</option>
 						<option th:each="pais: ${listaPaises}" th:text=${pais.nombre}
 							th:value="${pais.id}"></option>
 					</select>
 				</div>
-				<div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+				<div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"
+					class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="roles">Roles</label>
-				<div th:each="role: ${listaRoles}">
+
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-2">Roles</label>
+				<div th:each="role: ${listaRoles}" class="row col-sm-2">
 					<input type="checkbox" th:field="*{roles}" th:value="${role.id}"
-						th:checked="${#lists.contains(usuario.roles, role)}"> <label
-						th:for="${#ids.prev('roles')}" th:text="${role.nombre}"></label>
+						th:checked="${#lists.contains(usuario.roles, role)}"
+						class="form-control col-sm-2"> <label
+						th:for="${#ids.prev('roles')}" th:text="${role.nombre}"
+						class="col-form-label col-sm-2"></label>
 				</div>
-				<div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
+				<div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"
+					class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="identificador">Identificador</label>
-				<div>
+
+
+			<div class="form-group row">
+				<label for="identificador" class="col-form-label col-sm-2">Identificador</label>
+				<div class="col-sm-4">
 					<input type="text" id="identificador" th:field="*{identificador}"
-						placeholder="13.458.365-K">
+						placeholder="13.458.365-K" class="form-control">
 				</div>
 				<div th:if="${#fields.hasErrors('identificador')}"
-					th:errors="*{identificador}"></div>
+					th:errors="*{identificador}" class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="nombre">Nombre</label>
-				<div>
-					<input type="text" id="nombre" th:field="*{nombre}">
+
+
+			<div class="form-group row">
+				<label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+				<div class="col-sm-4">
+					<input type="text" id="nombre" th:field="*{nombre}"
+						class="form-control">
 				</div>
-				<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+				<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+					class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="apellido">Apellido </label>
-				<div>
-					<input type="text" id="apellido" th:field="*{apellido}">
+
+
+			<div class="form-group row">
+				<label for="apellido" class="col-form-label col-sm-2">Apellido
+				</label>
+				<div class="col-sm-4">
+					<input type="text" id="apellido" th:field="*{apellido}"
+						class="form-control">
 				</div>
 				<div th:if="${#fields.hasErrors('apellido')}"
-					th:errors="*{apellido}"></div>
+					th:errors="*{apellido}" class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="username"> Username </label>
-				<div>
-					<input type="text" id="username" th:field="*{username}">
+
+			<div class="form-group row">
+				<label for="username" class="col-form-label col-sm-2">
+					Username </label>
+				<div class="col-sm-4">
+					<input type="text" id="username" th:field="*{username}"
+						class="form-control">
 				</div>
 				<div th:if="${#fields.hasErrors('username')}"
-					th:errors="*{username}"></div>
+					th:errors="*{username}" class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="password"> Password </label>
-				<div>
-					<input type="password" th:field="*{password}" id="password">
+
+			<div class="form-group row">
+				<label for="password" class="col-form-label col-sm-2">
+					Password </label>
+				<div class="col-sm-4">
+					<input type="password" th:field="*{password}" id="password"
+						class="form-control">
 				</div>
 				<div th:if="${#fields.hasErrors('password')}"
-					th:errors="*{password}"></div>
+					th:errors="*{password}" class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="email"> Correo </label>
-				<div>
-					<input type="text" id="email" th:field="*{email}">
+
+			<div class="form-group row">
+				<label for="email" class="col-form-label col-sm-2"> Correo </label>
+				<div class="col-sm-4">
+					<input type="text" id="email" th:field="*{email}"
+						class="form-control">
 				</div>
-				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+					class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="cuenta"> Cuenta </label>
-				<div>
-					<input type="number" id="cuenta" th:field="*{cuenta}">
+
+			<div class="form-group row">
+				<label for="cuenta" class="col-form-label col-sm-2"> Cuenta
+				</label>
+				<div class="col-sm-4">
+					<input type="number" id="cuenta" th:field="*{cuenta}"
+						class="form-control">
 				</div>
-				<div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
+				<div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"
+					class="alert alert-danger"></div>
 			</div>
-			<div>
-				<label for="fechaNacimiento"> Fecha Nacimiento </label>
-				<div>
+
+			<div class="form-group row">
+				<label for="fechaNacimiento" class="col-form-label col-sm-2">
+					Fecha Nacimiento </label>
+				<div class="col-sm-4">
 					<input type="date" id="fechaNacimiento"
-						th:field="*{fechaNacimiento}" placeholder="yyyy-MM-dd">
+						th:field="*{fechaNacimiento}" placeholder="yyyy-MM-dd"
+						class="form-control">
 				</div>
 				<div th:if="${#fields.hasErrors('fechaNacimiento')}"
-					th:errors="*{fechaNacimiento}"></div>
+					th:errors="*{fechaNacimiento}" class="alert alert-danger"></div>
 			</div>
+
 			<br>
-			<div>
-				<div>
-					<input type="submit" value="Enviar">
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<input type="submit" value="Enviar" class="btn btn-primary">
 				</div>
 			</div>
 
@@ -123,8 +167,5 @@
 
 		</form>
 	</div>
-	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
 </body>
 </html>

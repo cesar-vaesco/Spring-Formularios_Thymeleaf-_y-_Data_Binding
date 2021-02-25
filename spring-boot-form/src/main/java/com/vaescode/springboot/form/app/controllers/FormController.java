@@ -145,7 +145,7 @@ public class FormController {
 		// validador.validate(usuario, result);
 		
 		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Resultado form");
+			model.addAttribute("titulo", "Formulario usuarios");
 			return "form";
 		}
 
