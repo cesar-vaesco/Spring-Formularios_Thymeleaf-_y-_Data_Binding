@@ -120,8 +120,8 @@ public class FormController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
-		usuario.setNombre("");
-		usuario.setApellido("");
+		usuario.setNombre("César");
+		usuario.setApellido("Vargas");
 		usuario.setIdentificador("12.456.478-K");
 		usuario.setHabilitar(true);
 		
