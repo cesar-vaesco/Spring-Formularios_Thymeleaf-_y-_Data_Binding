@@ -3,16 +3,14 @@ package com.vaescode.springboot.form.app.services;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
-import com.vaescode.springboot.form.app.model.domain.Pais;
 import com.vaescode.springboot.form.app.model.domain.Role;
 
 @Service
 public class RoleServiceImpl implements RoleService {
 
-	//private List<Pais> lista;
 	private List<Role> roles;
 	
 	

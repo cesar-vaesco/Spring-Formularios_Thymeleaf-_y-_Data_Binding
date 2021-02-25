@@ -8,6 +8,14 @@
 	<h3 th:text="${titulo}"></h3>
 	<form th:action="@{/form}" th:object="${usuario}" method="post">
 
+
+		<div>
+			<label for="habilitar">Habilitar</label>
+			<div>
+				<input type="checkbox" id="habilitar" th:field="*{habilitar}"
+					placeholder="13.458.365-K">
+			</div>
+		</div>
 		<div>
 			<label for="pais">País</label>
 			<div>
@@ -30,7 +38,8 @@
 		<div>
 			<label for="identificador">Identificador</label>
 			<div>
-				<input type="text" id="identificador" th:field="*{identificador}" placeholder="13.458.365-K">
+				<input type="text" id="identificador" th:field="*{identificador}"
+					placeholder="13.458.365-K">
 			</div>
 			<div th:if="${#fields.hasErrors('identificador')}"
 				th:errors="*{identificador}"></div>
