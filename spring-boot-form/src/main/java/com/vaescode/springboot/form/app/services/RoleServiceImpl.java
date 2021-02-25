@@ -22,7 +22,7 @@ public class RoleServiceImpl implements RoleService {
 		this.roles.add(new Role(1,"Administrador","ROLE_ADMIN"));
 		this.roles.add(new Role(2,"Usuario","ROLE_USER"));
 		this.roles.add(new Role(3,"Moderador","ROLE_MODERATOR"));
-		this.roles.add(new Role(4,"qa","ROLE_QA"));
+		this.roles.add(new Role(4,"QA","ROLE_QA"));
 		this.roles.add(new Role(5,"Desarrollador","ROLE_DEVELOPER"));
 	}
 

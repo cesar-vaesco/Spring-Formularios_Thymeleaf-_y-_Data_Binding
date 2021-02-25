@@ -30,7 +30,7 @@
 		<div>
 			<label for="identificador">Identificador</label>
 			<div>
-				<input type="text" id="identificador" th:field="*{identificador}">
+				<input type="text" id="identificador" th:field="*{identificador}" placeholder="13.458.365-K">
 			</div>
 			<div th:if="${#fields.hasErrors('identificador')}"
 				th:errors="*{identificador}"></div>
