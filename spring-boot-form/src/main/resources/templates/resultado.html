@@ -6,10 +6,16 @@
 <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+
+	<div class="alert alert-success">
+		<span th:text="'Tiempo transcurrido: ' + ${tiempoTranscurrido} + ' en milisegundos'"></span>
+	</div>
+	
 	<div class="container">
 		<a th:href="@{/form}" class="btn btn-success btn-lg my-3">volver</a>
 		<ul class="list-group my-2">
-			<li class="list-group-item active font-weight-bold" th:text="${titulo}"></li>
+			<li class="list-group-item active font-weight-bold"
+				th:text="${titulo}"></li>
 			<li class="list-group-item" th:text="'Nombre: ' + ${usuario.nombre}"></li>
 			<li class="list-group-item"
 				th:text="'Apellido: ' + ${usuario.apellido}"></li>

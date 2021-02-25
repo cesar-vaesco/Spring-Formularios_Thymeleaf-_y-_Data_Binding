@@ -7,7 +7,9 @@
 </head>
 <body>
 
-
+	<div class="alert alert-success">
+		<span th:text="'Tiempo transcurrido: ' + ${tiempoTranscurrido} + ' en milisegundos'"></span>
+	</div>
 
 	<div class="container bg-secondary text-white font-weight-bold mb-3">
 
@@ -125,8 +127,8 @@
 				<label for="email" class="col-form-label col-sm-2"> Correo </label>
 				<div class="col-sm-4 input-group-append">
 					<input type="text" id="email" th:field="*{email}"
-						class="form-control">
-					<span class="input-group-text" id="basic-addon2">@example.com</span>
+						class="form-control"> <span class="input-group-text"
+						id="basic-addon2">@example.com</span>
 				</div>
 
 				<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"

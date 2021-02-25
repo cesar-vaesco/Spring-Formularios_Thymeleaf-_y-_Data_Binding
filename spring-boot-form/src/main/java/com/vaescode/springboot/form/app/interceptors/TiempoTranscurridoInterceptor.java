@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-@Component
+@Component("tiempoTranscurridoInterceptor")
 public class TiempoTranscurridoInterceptor implements HandlerInterceptor {
 
 	
@@ -22,8 +22,9 @@ public class TiempoTranscurridoInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		logger.info("TiempoTranscurridoInterceptor: preHandle() entrando...");
+		logger.info("Interceptando: " + handler);
 		long tiempoInicio = System.currentTimeMillis();
-		request.setAttribute("TiempoInicio", tiempoInicio);
+		request.setAttribute("tiempoInicio", tiempoInicio);
 		
 		/*Simulando una carga/demora en la petición(request)*/
 		Random random = new Random();
