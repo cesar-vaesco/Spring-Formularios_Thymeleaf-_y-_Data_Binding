@@ -26,7 +26,7 @@ public class AppController {
 		mensaje.append(apertura);
 		mensaje.append(" y las ");
 		mensaje.append(cierre);
-		mensaje.append("hrs. Gracias!!");
+		mensaje.append(" hrs. Gracias!!");
 		
 		model.addAttribute("titulo","Fuera del horario de atención");
 		model.addAttribute("mensaje",mensaje);

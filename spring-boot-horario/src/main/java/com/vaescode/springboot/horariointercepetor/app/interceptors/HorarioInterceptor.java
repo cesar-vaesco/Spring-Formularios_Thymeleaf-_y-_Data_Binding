@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-@Component
+@Component("horario")
 public class HorarioInterceptor implements HandlerInterceptor {
 	
 	@Value("${config.horario.apertura}")
@@ -47,7 +47,7 @@ public class HorarioInterceptor implements HandlerInterceptor {
 			ModelAndView modelAndView) throws Exception {
 
 
-		String mensaje = (String)request.getAttribute("mesaje");
+		String mensaje = (String)request.getAttribute("mensaje");
 		modelAndView.addObject("horario", mensaje);
 	}
 
