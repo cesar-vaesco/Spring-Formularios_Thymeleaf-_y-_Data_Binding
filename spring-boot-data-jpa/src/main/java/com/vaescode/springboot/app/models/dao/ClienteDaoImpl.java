@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vaescode.springboot.app.models.entity.Cliente;
 
-@Repository
+@Repository()
 public class ClienteDaoImpl implements IClienteDao{
 
 	@PersistenceContext
