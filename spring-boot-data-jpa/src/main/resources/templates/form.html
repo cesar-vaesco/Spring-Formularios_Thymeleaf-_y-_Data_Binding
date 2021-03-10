@@ -40,7 +40,7 @@
 				<li th:each="err: ${#fields.errors('*')}" th:text="${err}">
 			</ul>
 		</div>
-		
+
 		<form th:action="@{/form}" th:object="${cliente}" method="post">
 
 			<div class="form-group row">
@@ -89,8 +89,10 @@
 				</div>
 			</div>
 
-
-			<input type="hidden" th:field="*{id}" />
+			<!-- El input de tipo "hidden" permite incluir datos que no se requiere ser rednderizados 
+				pero que ayudan para modificar datos. Para el caso del formulario, si en la clase controller 
+				se agrega la anotación @SessionAttributes se puede omitir el uso de esta etique input	 -->
+			 <!-- <input type="hidden" th:field="*{id}" />  --> 
 
 		</form>
 	</div>
