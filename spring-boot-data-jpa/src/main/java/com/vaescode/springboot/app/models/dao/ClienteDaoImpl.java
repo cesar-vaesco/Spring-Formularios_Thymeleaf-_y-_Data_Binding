@@ -28,19 +28,32 @@ public class ClienteDaoImpl implements IClienteDao {
 	public void save(Cliente cliente) {
 		if (cliente.getId() != null && cliente.getId() > 0) {
 			/*
-			 * el método merge une/actualiza los datos actualizados */
+			 * el método merge une/actualiza los datos actualizados
+			 */
 			em.merge(cliente);
 		} else {
 			/*
-			 * MAntiene los datos del cliente*/
+			 * MAntiene los datos del cliente
+			 */
 			em.persist(cliente);
 		}
 
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Cliente findOne(Long id) {
 		return em.find(Cliente.class, id);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long id) {
+		/*
+		 * Cliente cliente = findOne(id); em.remove(cliente);
+		 */
+		em.remove(findOne(id));
+
 	}
 
 }

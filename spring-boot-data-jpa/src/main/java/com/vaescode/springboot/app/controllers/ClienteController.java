@@ -24,8 +24,6 @@ public class ClienteController {
 	@Autowired
 	private IClienteDao clienteDao;
 
-	
-	
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
@@ -33,8 +31,6 @@ public class ClienteController {
 		return "listar";
 	}
 
-	
-	
 	@GetMapping("/form")
 	public String crear(Model model) {
 
@@ -45,22 +41,20 @@ public class ClienteController {
 		return "form";
 	}
 
-	
-	
-	@RequestMapping(value= "/form/{id}")
-	public String editar(@PathVariable(value="id") Long id, Model model) {
-		
+	@RequestMapping(value = "/form/{id}")
+	public String editar(@PathVariable(value = "id") Long id, Model model) {
+
 		Cliente cliente = null;
-		
-		if(id > 0) {
+
+		if (id > 0) {
 			cliente = clienteDao.findOne(id);
 		} else {
 			return "redirect:/listar";
 		}
-		
+
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("titulo", "Editar cliente");
-		
+
 		return "form";
 	}
 
@@ -73,10 +67,23 @@ public class ClienteController {
 		}
 
 		clienteDao.save(cliente);
-		/*Elimina el objeto cliente de la sesión y acompleta la acción de guardar - insertar */
+		/*
+		 * Elimina el objeto cliente de la sesión y acompleta la acción de guardar -
+		 * insertar
+		 */
 		status.setComplete();
-		
+
 		return "redirect:listar";
+	}
+
+	@RequestMapping(value ="/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id) {
+
+		if (id > 0) {
+			clienteDao.delete(id);
+		}
+
+		return "redirect:/listar";
 	}
 
 }
