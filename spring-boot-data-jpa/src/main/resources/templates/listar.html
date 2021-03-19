@@ -6,48 +6,52 @@
 	<header th:replace="layout/layout :: header"></header>
 
 
-	<div class="container">
+	<div class="container py-4">
 
-		<h1 class="text-secondary  mt-2" th:text="${titulo}"></h1>
-		<hr class="bg-primary border border-5 border-primary rounded-pill">
+		<div class="card bg-light">
 
-		<p>
-			<a th:href="@{/form}" class="btn btn-outline-primary btn-xs">Crear
-				cliente</a>
-		</p>
+			<div class="card-header" th:text="${titulo}"></div>
 
-		<table class="table table-striped mt-2">
+			<div class="card-body">
 
-			<thead class="bg-dark text-white">
-				<tr>
-					<th>id</th>
-					<th>nombre</th>
-					<th>apellido</th>
-					<th>email</th>
-					<th>fecha</th>
-					<th>editar</th>
-					<th>eliminar</th>
-				</tr>
-			</thead>
 
-			<tbody>
-				<tr th:each="cliente: ${clientes}">
-					<td th:text="${cliente.id}"></td>
-					<td th:text="${cliente.nombre}"></td>
-					<td th:text="${cliente.apellido}"></td>
-					<td th:text="${cliente.email}"></td>
-					<td th:text="${cliente.createAt}"></td>
-					<td><a class="btn btn-primary btn-xs"
-						th:href="@{/form/} + ${cliente.id}" th:text="'editar'"></a></td>
-					<td><a class="btn btn-danger btn-xs"
-						th:href="@{/eliminar/} + ${cliente.id}" th:text="'eliminar'"
-						onclick="return confirm('Estás seguro que quieres eliminar? ');"></a></td>
-				</tr>
+				<h4 class="card-title">
+					<a th:href="@{/form}" class="btn btn-outline-primary btn-xs ">Crear
+						cliente</a>
+				</h4>
 
-			</tbody>
-		</table>
-	</div>
+				<table class="table table-striped mt-2">
 
+					<thead class="bg-dark text-white">
+						<tr>
+							<th>id</th>
+							<th>nombre</th>
+							<th>apellido</th>
+							<th>email</th>
+							<th>fecha</th>
+							<th>editar</th>
+							<th>eliminar</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="cliente: ${clientes}">
+							<td th:text="${cliente.id}"></td>
+							<td th:text="${cliente.nombre}"></td>
+							<td th:text="${cliente.apellido}"></td>
+							<td th:text="${cliente.email}"></td>
+							<td th:text="${cliente.createAt}"></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/form/} + ${cliente.id}" th:text="'editar'"></a></td>
+							<td><a class="btn btn-danger btn-xs"
+								th:href="@{/eliminar/} + ${cliente.id}" th:text="'eliminar'"
+								onclick="return confirm('EstÃ¡s seguro que quieres eliminar? ');"></a></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 	<footer th:replace="layout/layout :: footer"></footer>
 

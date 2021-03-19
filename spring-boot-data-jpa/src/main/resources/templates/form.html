@@ -4,74 +4,76 @@
 <body>
 
 	<header th:replace="layout/layout :: header"></header>
-	
-	<div class="container">
 
-		<h1 class="text-secondary  mt-2" th:text="${titulo}"></h1>
-		<hr class="bg-primary border border-5 border-primary rounded-pill">
+	<div class="container py-4">
 
-		<div th:object="${cliente}" th:remove="tag">
-			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-				<li th:each="err: ${#fields.errors('*')}" th:text="${err}">
-			</ul>
-		</div>
+		<div class="card bg-dark text-white ">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body ">
 
-		<form th:action="@{/form}" th:object="${cliente}" method="post">
-
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Nombre</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{nombre}" class="form-control"
-						th:errorClass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				<div th:object="${cliente}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+						<li th:each="err: ${#fields.errors('*')}" th:text="${err}">
+					</ul>
 				</div>
-			</div>
 
-			<div class="form-group row mt-3">
-				<label class="col-sm-2 col-form-label">Apellido</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{apellido}" class="form-control"
-						th:errorClass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
-				</div>
-			</div>
+				<form th:action="@{/form}" th:object="${cliente}" method="post">
 
-			<div class="form-group row mt-3">
-				<label class="col-sm-2 col-form-label">Email</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{email}" class="form-control"
-						th:errorClass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
-				</div>
-			</div>
-			<div class="form-group row mt-3">
-				<label class="col-sm-2 col-form-label">Fecha</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{createAt}" class="form-control"
-						th:errorClass="'form-control alert-danger'"
-						placeholder="yyyy-MM-dd" /> <small class="form-text text-danger"
-						th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
-				</div>
-			</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombre}" class="form-control"
+								th:errorClass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+					</div>
 
-			<div class="form-group row mt-3">
-				<div class="col-sm-6">
-					<input type="submit" value="Crear Cliente"
-						class="btn btn-primary mt-3" />
-				</div>
-			</div>
+					<div class="form-group row mt-3">
+						<label class="col-sm-2 col-form-label">Apellido</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{apellido}" class="form-control"
+								th:errorClass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+						</div>
+					</div>
 
-			<!-- El input de tipo "hidden" permite incluir datos que no se requiere ser rednderizados 
+					<div class="form-group row mt-3">
+						<label class="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{email}" class="form-control"
+								th:errorClass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+						</div>
+					</div>
+					<div class="form-group row mt-3">
+						<label class="col-sm-2 col-form-label">Fecha</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{createAt}" class="form-control"
+								th:errorClass="'form-control alert-danger'"
+								placeholder="yyyy-MM-dd" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row mt-3">
+						<div class="col-sm-6 ">
+							<input type="submit" value="Crear Cliente"
+								class="btn btn-secondary " />
+						</div>
+					</div>
+
+					<!-- El input de tipo "hidden" permite incluir datos que no se requiere ser rednderizados 
 				pero que ayudan para modificar datos. Para el caso del formulario, si en la clase controller 
 				se agrega la anotación @SessionAttributes se puede omitir el uso de esta etique input	 -->
-			<!-- <input type="hidden" th:field="*{id}" />  -->
+					<!-- <input type="hidden" th:field="*{id}" />  -->
 
-		</form>
-	</div>
-
+				</form>
+			</div>
+		</div>
 	</div>
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
