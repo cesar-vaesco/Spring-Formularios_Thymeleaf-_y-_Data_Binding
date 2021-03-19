@@ -1,35 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title th:text="${titulo}">Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-	crossorigin="anonymous">
-</head>
+<head th:replace="layout/layout :: head"></head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-		<div class="container-fluid">
-			<a class="navbar-brand fw-bold" href="#">Spring - boot</a>
-			<button class="navbar-toggler " type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" th:href="@{/404}">Home</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Clientes</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<header th:replace="layout/layout :: header"></header>
+	
 	<div class="container">
 
 		<h1 class="text-secondary  mt-2" th:text="${titulo}"></h1>
@@ -91,15 +66,13 @@
 
 			<!-- El input de tipo "hidden" permite incluir datos que no se requiere ser rednderizados 
 				pero que ayudan para modificar datos. Para el caso del formulario, si en la clase controller 
-				se agrega la anotaciÃ³n @SessionAttributes se puede omitir el uso de esta etique input	 -->
-			 <!-- <input type="hidden" th:field="*{id}" />  --> 
+				se agrega la anotación @SessionAttributes se puede omitir el uso de esta etique input	 -->
+			<!-- <input type="hidden" th:field="*{id}" />  -->
 
 		</form>
 	</div>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-		crossorigin="anonymous"></script>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>
