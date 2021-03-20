@@ -49,4 +49,6 @@ public class ClienteServiceImpl implements IClienteService {
 		return clienteDao.findAll(pageable);
 	}
 
+
+
 }
