@@ -27,25 +27,26 @@ public class Cliente implements Serializable {
 
 	@NotEmpty
 	private String nombre;
-	
+
 	@NotEmpty
 	private String apellido;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
 
 	@NotNull
 	@Column(name = "create_at")
-	@DateTimeFormat(pattern ="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
+
 	
+	private String foto;
+
 	/*
-	@PrePersist
-	public void prePersist() {
-		createAt = new Date();
-	}*/
+	 * @PrePersist public void prePersist() { createAt = new Date(); }
+	 */
 
 	public Long getId() {
 		return id;
@@ -89,6 +90,14 @@ public class Cliente implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	private static final long serialVersionUID = 1L;
