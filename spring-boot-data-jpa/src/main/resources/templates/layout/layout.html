@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org/">
+
 <head th:fragment="head">
 <meta charset="UTF-8" />
 <title th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - '+${titulo}">Insert
 	title here</title>
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<!-- <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" /> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
+
 <body>
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -35,20 +38,24 @@
 	</header>
 
 	<div class="container"></div>
+	
+	
 	<footer th:fragment="footer" class="container mt-5">
 		<hr />
-		<img  class="mx-auto d-block " th:src="@{/images/spring.png}" alt="Spring logo" width="50px"/>
+		<img  class="mx-auto d-block" src="https://blog.rootnite.com/wp-content/uploads/2019/07/spring-framework.png" alt="Spring logo" width="100px" />
 
 		<p class="text-center">
 			Powered by <a href="https://projects.spring.io/spring-boot/">Spring
-				Boot</a> y <a href="http://www.thymeleaf.org">Thymeleaf</a>.
+				Boot</a> y <a href="https://www.thymeleaf.org">Thymeleaf</a>.
 		</p>
 		<p class="text-center">
 			Este proyecto fue desarrollado en IDE Eclipse + Spring Plugins (STS Spring Tool), 
 			por <strong>César Vargas Escorcia</strong>.
 			<br /> &copy; Company 2021, Inc. Todos los derechos reservados. Términos de uso y privacidad.<br />
 		</p>
-		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<!-- <script th:src="@{/main/resources/static/js/bootstrap.min.js}"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+		
 	</footer>
 
 
