@@ -11,17 +11,20 @@
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 			
-				<img th:if="${#strings.length(cliente.foto) > 0}" class="img-thumbnail rounded float-left"
-					style="max-width: 22%;" th:src="@{'/uploads/' + ${cliente.foto}}"
+				<img th:if="${#strings.length(cliente.foto) > 0}" class="img-thumbnail rounded float-left  mr-2"
+					style="max-width: 20%;" th:src="@{'/uploads/' + ${cliente.foto}}"
 					th:alt="${cliente.foto}" />
 
-				<ul class="list-group">
-					<li class="list-group-item" th:text="${cliente.nombre}"></li>
-					<li class="list-group-item" th:text="${cliente.apellido}"></li>
-					<li class="list-group-item" th:text="${cliente.email}"></li>
-					<li class="list-group-item" th:text="${cliente.createAt}"></li>
+				<ul class="list-group col-7">
+					<li class="list-group-item" th:text="'Nombre: ' + ${cliente.nombre}"></li>
+					<li class="list-group-item" th:text="'Apellido: ' + ${cliente.apellido}"></li>
+					<li class="list-group-item" th:text="'Correo: ' + ${cliente.email}"></li>
+					<li class="list-group-item" th:text="'Fecha: ' + ${cliente.createAt}"></li>
 				</ul>
 
+			</div>
+			<div class="card-body">
+				<a class="btn btn-primary btn-xs" th:href="@{/listar}" th:text="'<< volver'"></a>
 			</div>
 		</div>
 
