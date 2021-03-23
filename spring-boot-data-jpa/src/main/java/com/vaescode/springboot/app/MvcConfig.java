@@ -14,7 +14,8 @@ public class MvcConfig  implements WebMvcConfigurer{
 	
 	private static final Logger log = LoggerFactory.getLogger(MvcConfig.class);
 
-	@Override
+	/**
+	 *@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.addResourceHandlers(registry);
@@ -25,5 +26,7 @@ public class MvcConfig  implements WebMvcConfigurer{
 		
 		log.info("ResourcePath:  " + resourcePath);
 	}
+	 */
+	
 
 }
