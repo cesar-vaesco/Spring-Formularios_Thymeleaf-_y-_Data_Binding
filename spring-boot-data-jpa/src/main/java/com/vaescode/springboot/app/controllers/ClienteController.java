@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -34,6 +35,23 @@ public class ClienteController {
 
 	@Autowired
 	private IClienteService clienteService;
+	
+	@GetMapping(value="/ver/{id}")
+	public String ver(@PathVariable("id") Long id, Map<String, Object> model, RedirectAttributes flash) {
+		
+		
+		Cliente cliente = clienteService.findOne(id);
+		
+		if (cliente == null) {
+			flash.addFlashAttribute("error", "El cliente mno existe en la base de datos");
+			return "redirect:/listar";
+		}
+		
+		model.put("cliente", cliente);
+		model.put("titulo", "Detalle cliente: ");
+		
+		return "ver";
+	}
 
 	@GetMapping("/listar")
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
